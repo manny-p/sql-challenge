@@ -1,13 +1,19 @@
 -- List the following details of each employee: employee number, last name, first name, sex, salary
-SELECT 	employees.emp_no,
-		employees.last_name,
-		employees.first_name,
-		employees.sex,
-		salaries.salary
+SELECT
+       employees.emp_no,
+       employees.last_name,
+       employees.first_name,
+       employees.sex,
+       salaries.salary
 FROM employees JOIN salaries ON employees.emp_no = salaries.emp_no;
 
---List the first name, last name, and hire date for employees who were hired in 1986
-
+-- List the first name, last name, and hire date for employees who were hired in 1986
+SELECT
+	hire_date,
+	first_name,
+	last_name
+FROM employees
+WHERE DATE_PART('year',hire_date) = 1986;
 
 --List the manager of each department with dept_no, dept_name, manager's emp_no, first and last name
 
