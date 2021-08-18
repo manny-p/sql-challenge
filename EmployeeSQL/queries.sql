@@ -54,11 +54,20 @@ FROM employees
 WHERE departments.dept_name = 'Sales';
 
 --List all employees in Sales and Development Departments including emp_no, last name, first name, dept name
-
+SELECT employees.emp_no,
+       employees.last_name,
+       employees.first_name,
+       departments.dept_name
+FROM employees
+         JOIN dept_emp
+              ON dept_emp.emp_no = employees.emp_no
+         JOIN departments
+              ON departments.dept_no = dept_emp.dept_no
+WHERE departments.dept_name = 'Sales'
+   OR departments.dept_name = 'Development';
 
 --In descending order, list the frequency count of employee last names
-
-
-
-
-
+SELECT last_name, COUNT(*) AS last_name_count
+FROM employees
+GROUP BY last_name
+ORDER BY last_name_count DESC;
